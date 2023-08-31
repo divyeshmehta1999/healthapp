@@ -51,7 +51,7 @@ class HealthDataScreenUI extends StatelessWidget {
                             color: const Color(0xFF2086fd),
                           );
                         } else {
-                          double energyValue = double.tryParse(
+                          num energyValue = int.tryParse(
                                   controller.lastAddedActiveEnergy.value) ??
                               0.0;
                           String energyText = energyValue > 0.0
