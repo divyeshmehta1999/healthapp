@@ -4,9 +4,10 @@ import 'package:linear_progress_bar/linear_progress_bar.dart';
 
 Widget healthCard({
   String title = "",
+  String goal = "",
   String data = "",
-  int currentSteps = 0,
-  int maxSteps = 100,
+  var currentSteps = 0,
+  var maxSteps = 100,
   Color color = Colors.red,
   required String image,
 }) {
@@ -93,7 +94,7 @@ Widget healthCard({
                         ),
                       ),
                       Text(
-                        "Goal: 1000",
+                        "Goal: $goal",
                         style: TextStyle(
                           color: textColor,
                           fontWeight: FontWeight.w500,

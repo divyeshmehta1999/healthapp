@@ -4,6 +4,8 @@ import 'package:health/health.dart';
 class HealthDataScreen extends GetxController {
   var steps = "".obs;
   var activeEnergy = "".obs;
+  var lastAddedSteps = "".obs;
+  var lastAddedActiveEnergy = "".obs;
 
   var healthData = <HealthDataPoint>[].obs;
 
@@ -40,10 +42,12 @@ class HealthDataScreen extends GetxController {
               print("h ${h.type}");
               print("hv ${h.value}");
               steps.value = "${h.value}";
+              lastAddedSteps.value = "${h.value}";
             } else if (h.type == HealthDataType.ACTIVE_ENERGY_BURNED) {
               print("ene ${h.type}");
               print("ene bur ${h.value}");
               activeEnergy.value = "${h.value}";
+              lastAddedActiveEnergy.value = "${h.value}";
             }
           }
         }
@@ -53,6 +57,9 @@ class HealthDataScreen extends GetxController {
 
       healthData.value = HealthFactory.removeDuplicates(healthData);
       update();
+
+      print("Last added steps: ${lastAddedSteps.value}");
+      print("Last added active energy burned: ${lastAddedActiveEnergy.value}");
     } else {
       print("Authorization not granted");
     }

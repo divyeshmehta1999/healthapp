@@ -42,16 +42,18 @@ class HealthDataScreenUI extends StatelessWidget {
                         if (index == 0) {
                           return healthCard(
                             title: "Steps: ",
+                            goal: '100',
                             image: "assets/ion_footsteps-sharp.png",
-                            data: controller.steps.value,
-                            currentSteps: controller.healthData.length,
+                            data: controller.lastAddedSteps.value,
+                            currentSteps:
+                                int.parse(controller.lastAddedSteps.value),
                             maxSteps: 100,
                             color: const Color(0xFF2086fd),
                           );
                         } else {
-                          double energyValue =
-                              double.tryParse(controller.activeEnergy.value) ??
-                                  0.0;
+                          double energyValue = double.tryParse(
+                                  controller.lastAddedActiveEnergy.value) ??
+                              0.0;
                           String energyText = energyValue > 0.0
                               ? "${(energyValue / 1000).toStringAsFixed(2)}"
                               : "";
@@ -59,6 +61,9 @@ class HealthDataScreenUI extends StatelessWidget {
                           return healthCard(
                             title: "Calories Burned",
                             image: "assets/kcal 1.png",
+                            goal: '1000',
+                            maxSteps: 1000,
+                            currentSteps: energyValue.toInt(),
                             data: energyText,
                             color: const Color(0xFFf77e7e),
                           );
